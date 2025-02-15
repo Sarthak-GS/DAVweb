@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive analysis of IPL 2024 auction insights based on Syed Mushtaq Ali Trophy performance metrics. Discover key trends in player valuations and team strategies.">
+    <title>IPL 2024 Auction Analysis | Cricket Analytics Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #1d4ed8;
+            --accent-color: #eab308;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --bg-light: #f3f4f6;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        nav {
+            background: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            background: var(--bg-light);
+            transform: translateY(-2px);
+            color: var(--secondary-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .insight-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .insight-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .insight-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .insight-section h2::after {
+            content: '';
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), transparent);
+            border-radius: 1.5px;
+        }
+
+        .insight-section p {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .key-finding {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 1rem;
+            border-left: 6px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .key-finding:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .key-finding h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .key-finding h3::before {
+            content: '→';
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .visualization {
+            margin: 2.5rem 0;
+            text-align: center;
+            position: relative;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .visualization img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .visualization:hover img {
+            transform: scale(1.02);
+        }
+
+        .insight-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border-left: 6px solid var(--primary-color);
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            transition: var(--transition);
+        }
+        
+        .insight-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .insight-content {
+            flex: 1;
+        }
+        
+        .insight-content h3 {
+            color: var(--primary-color);
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .insight-content h3::before {
+            content: '→';
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        
+        .insight-content p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .insight-visualization {
+            flex: 1;
+            max-width: 35%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .insight-visualization img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            transition: var(--transition);
+        }
+        
+        .insight-visualization:hover img {
+            transform: scale(1.02);
+        }
+        
+        @media (max-width: 768px) {
+            .insight-card {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .insight-visualization {
+                max-width: 100%;
+            }
+        }
+
+        .caption {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .stat-highlight {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .stat-highlight h3 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .stat-highlight p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            margin-top: 6rem;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            font-size: 1.5rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            background: var(--secondary-color);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 4rem 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .nav-content {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .insight-section {
+                padding: 2rem;
+            }
+
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-highlight {
+                padding: 2rem;
+            }
+
+            .stat-highlight h3 {
+                font-size: 2.5rem;
+            }
+
+            .scroll-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .insight-section h2 {
+                font-size: 2rem;
+            }
+
+            .key-finding {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header>
+        <div class="header-content">
+            <h1>IPL Auction Analytics 2024</h1>
+            <p class="subtitle">Deep dive into player valuations: Analyzing Syed Mushtaq Ali Trophy performance and its impact on IPL market value</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#performance-metrics" class="nav-link">Performance Metrics</a>
+            <a href="#auction-insights" class="nav-link">Auction Insights</a>
+            <a href="#player-valuation" class="nav-link">Player Valuation</a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section id="performance-metrics" class="insight-section">
+            <h2>Key Performance Metrics</h2>
+            <p>Our comprehensive analysis of the Syed Mushtaq Ali Trophy 2024 unveils compelling patterns in how T20 performance metrics influence IPL auction prices. </p>
+            <p>You might be wondering, what exactly is the Syed Mushtaq Ali Trophy and why focus on it? Let me explain.
+                <br>
+                The Syed Mushtaq Ali Trophy is a T20 tournament held from September to November, where India's top National level players showcase their skills. But here's the twist: just after it ends, the IPL auction takes place in December. IPL teams are always watching these performances closely because strong showings in the Syed Mushtaq Ali Trophy can directly influence a player’s auction price.
+                <br>
+                <br>
+                By analyzing key batting metrics like strike rate, average, and total runs scored, we realized that these stats offer valuable insights into a player’s potential in the IPL. So, while the Syed Mushtaq Ali Trophy is a domestic tournament, it plays a huge role in shaping the IPL landscape. Teams are always scouting, and performances here often predict future IPL stars.</p>
+            
+            <!-- <div class="stat-highlight">
+                <h3>160-180</h3>
+                <p>Optimal strike rate range for T20 success</p>
+            </div> -->
+            
+            <div class="insight-grid">
+                <div class="key-finding">
+                    <h3>Strike Rate Distribution</h3>
+                    <p>Players predominantly maintain strike rates between 160-180, reflecting the aggressive nature of T20 cricket in the tournament.</p>
+                    <div class="visualization">
+                        <img src="images/strike_rate_distribution.png" alt="Strike rate distribution chart showing player performance patterns">
+                        <p class="caption">Distribution of player strike rates across the tournament</p>
+                    </div>
+                </div>
+                <div class="key-finding">
+                    <h3>Batting Averages</h3>
+                    <p>The distribution of batting averages shows a positive skew, indicating the challenge of maintaining high averages throughout such long tournament(3 months).</p>
+                    <div class="visualization">
+                        <img src="images\avg_distribution.png" alt="Scatter plot showing relationship between runs and batting average">
+                        <p class="caption">Correlation between total runs and batting average</p>
+                    </div>
+
+                    
+                </div>
+                <!-- <div class="key-finding">
+                    <h3>Run Correlation</h3>
+                    <p>Total runs scored show a strong linear relationship with batting average, confirming consistent performance across matches.</p>
+                    <div class="visualization">
+                        <img src="images\runs_vs_avg.png" alt="Scatter plot showing relationship between runs and strike rate">
+                        <p class="caption">Analysis of runs scored versus strike rate</p>
+                    </div>
+                </div> -->
+            </div>
+            
+        </section>
+
+        <div class="stat-highlight">
+            <h3>160-180</h3>
+            <p>Optimal strike rate range for T20 success & coming into selector's eyes</p>
+        </div>
+
+        <div class="insight-card">
+            <div class="insight-content">
+                <h3>Run Correlation</h3>
+                <p>The total runs scored exhibit a strong linear relationship with batting average, highlighting consistent performance across matches. This correlation suggests that players who maintain higher averages are generally more dependable run-scorers throughout the tournament. <br> The orange dots represent sold players, and their concentration on the higher side indicates that those with better averages are more likely to be bought.</p>
+                
+            </div>
+            <div class="insight-visualization">
+                <img src="images/runs_vs_avg.png" alt="Scatter plot showing relationship between runs and strike rate" >
+                <p class="caption">Analysis of runs scored versus batting average</p>
+            </div>
+        </div>
+
+        <section id="auction-insights" class="insight-section">
+            <h2>IPL Auction Insights</h2>
+            <p>The analysis of players sold in the IPL auction uncovers interesting trends in team preferences and pricing strategies. In the scatter plot comparing batting average and strike rate, the size of each dot reflects the player's sale price. It’s clear that players with higher averages and strike rates are represented by larger dots, indicating they were sold for higher prices.</p>
+            
+            <div class="visualization">
+                <img src="images/avg_vs_strike.png" alt="Scatter plot showing relationship between average and strike rate">
+                <p class="caption">Relationship between batting average and strike rate for sold players</p>
+            </div>
+
+            <div class="insight-grid">
+                <div class="key-finding">
+                    <h3>Strike Rate vs Runs Trade-off</h3>
+                    <p>Players with higher strike rates tend to score fewer runs, indicating a natural trade-off between aggressive batting and consistency.</p>
+                    <p>It is if one tries to increase strike rate by hitting some boundrires then at the same time he is taking high risk of getting out early </p>
+                    <div class="visualization">
+                        <img src="images/runs_vs_strike.png" alt="Analysis of the relationship between runs and strike rate">
+                        <p class="caption">Trade-off between aggressive batting and run accumulation</p>
+                    </div>
+                </div>
+                <div class="key-finding">
+                    <h3>Premium Player Profile</h3>
+                    <p>Players commanding higher auction prices typically demonstrating teams value all-round batting ability.</p>
+                    <p>we can see some outliers as well. It is because in syed Mushtaq Ali trophy some of the already recognised big player also play who get sold for much higher prices</p>
+                    <div class="visualization">
+                        <img src="images/sold_price_boxplot.png" alt="Box plot showing distribution of player prices">
+                        <p class="caption">Distribution of auction prices across different player categories</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="player-valuation" class="insight-section">
+            <h2>Domestic vs International Player Valuation</h2>
+            <p>Our analysis uncovered interesting differences in how IPL teams value domestic and international players, revealing distinct strategies in talent acquisition.</p>
+            
+            <div class="stat-highlight">
+                <h3>0-5 Crore</h3>
+                <p>Typical price range for emerging talent from Syed Mushtaq Ali Trophy</p>
+            </div>
+            
+            <div class="insight-grid">
+                <div class="key-finding">
+                    <h3>Indian Player Preference</h3>
+                    <p>IPL franchises tend to value Indian players with higher batting averages</p>
+
+                    <p>Evident from high coorelation between Sold price and batting average</p>
+
+                    <div class="visualization">
+                        <img src="images/correlation_matrix2.png" alt="Correlation matrix showing relationships between various metrics">
+                        <p class="caption">Correlation analysis of player metrics and auction prices</p>
+                    </div>
+                </div>
+                <div class="key-finding">
+                    <h3>Price-Performance Correlation</h3>
+                    <p>Sold price and batting average shows a positive correlation, indicating teams value consistent run-scoring ability.</p>
+                    <div class="visualization">
+                        <img src="images/sold_vs_avg.png" alt="Scatter plot showing relationship between price and average">
+                        <p class="caption">Relationship between auction price and batting average</p>
+                    </div>
+                    
+                </div>
+                <!-- <div class="key-finding">
+                    <h3>International Player Expectations</h3>
+                    <p>Teams show more confidence in foreign players' striking abilities, often valuing them for their aggressive batting potential and proven track record in various T20 leagues.</p>
+                </div> -->
+            </div>
+        </section>
+
+        <div class="stat-highlight">
+            <h3>Indian Player Expectations</h3>
+            <p>PL teams typically expect higher batting averages from Indian players, as they rely on them to stabilize the innings in the event of a collapse.  </p>
+        </div>
+        <div class="stat-highlight">
+            <h3>International Player Expectations</h3>
+            <p>Teams show more confidence in foreign players' striking abilities, often valuing them for their aggressive batting potential and proven track record in various T20 leagues</p>
+        </div>
+    </main>
+
+    <footer>
+        <p> Analysis by : Sarthak Gopal Sharma</p>
+    </footer>
+
+    <a href="#" class="scroll-top" aria-label="Scroll to top">↑</a>
+
+    <!-- <script>
+        // Show/hide scroll to top button
+        const scrollTop = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script> -->
+</body>
+</html>
